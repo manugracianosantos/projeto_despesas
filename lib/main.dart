@@ -14,7 +14,8 @@ class ExpensesApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-  // const MyHomePage({super.key});
+  // criamos uma lista fixa(por enquanto) que representa as transações feitas
+  //para isso criamos uma classe com todas as informações necessárias
   final _transactions = [
     Transaction(id: "t1", title: "Uber", value: 25.80, date: DateTime.now()),
     Transaction(id: "t2", title: "Açai", value: 22.60, date: DateTime.now()),
@@ -35,9 +36,14 @@ class MyHomePage extends StatelessWidget {
             ),
           ),
           Column(
-            //mapeando dados do
+            //Para começar a interface do cadastro de transações, a ideia é pegar
+            //cada item da lista e transformar em um card com as informações
+            //Precisamos usar um .map que percorre o a lista e transforma cada 
+            //elemento em um card, para isso o map retorna uma função tr que
+            //faz exatamente isso 
             children: //tr = transações
                 _transactions.map((tr) {
+                  //criamos 
                   return Card(
                     child: Row(
                       children: [
