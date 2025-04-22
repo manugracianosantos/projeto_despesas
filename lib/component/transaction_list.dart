@@ -10,13 +10,13 @@ class TransactionList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 500,
+      height: 300,
       child: ListView.builder(
         //o .builder faz ele nn querer mais experar um builder
         //começar a renderizar os elmeentos que apenas estão na tela
         itemCount: transactions.length,
-        itemBuilder: (ctx, index) { 
-          final tr =  (transactions[index]);
+        itemBuilder: (ctx, index) {
+          final tr = (transactions[index]);
           return Card(
             child: Row(
               children: [
