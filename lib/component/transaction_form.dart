@@ -49,10 +49,17 @@ class _TransactionFormState extends State<TransactionForm> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor: WidgetStatePropertyAll(
+                      Theme.of(context).colorScheme.secondary,
+                    ),
+                  ),
                   onPressed: _submitForm(),
                   child: Text(
                     "Nova Transação",
-                    style: TextStyle(color: Colors.purple),
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.onSecondary,
+                    ),
                   ),
                 ),
               ],
