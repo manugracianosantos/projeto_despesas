@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
-import '../models/transaction.dart';
+
+import 'models/transaction.dart';
 import 'component/transaction_list.dart';
 import 'component/transaction_form.dart';
 
@@ -13,33 +14,27 @@ class ExpensesApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: MyHomePage(),
-      theme: ThemeData(
-        textTheme: TextTheme(
-          titleLarge: TextStyle(
-            fontFamily: 'WinkyRough',
+      home: const MyHomePage(),
+      theme: tema.copyWith(
+        colorScheme: tema.colorScheme.copyWith(
+          primary: Color(0xFF6A1E55),
+          secondary: Color(0xFFA64D79),
+        ),
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Color(0xFF6A1E55),
+          titleTextStyle: TextStyle(
+            fontFamily: 'OpenSans',
             fontSize: 20,
-            fontWeight: FontWeight.w500,
+            fontWeight: FontWeight.bold,
           ),
         ),
-        useMaterial3: false, //versõa do design
-        fontFamily: 'Montserrat',
-        appBarTheme: AppBarTheme(
-          backgroundColor: Color(0xFF6A1E55),
-          // // foregroundColor: Colors.white,
-        ),
-        colorScheme: ColorScheme(
-          //define o esquema de cores do app
-          //seedColor: Colors.red, -> esse bagui é tipo o MaterialColor mas nn quero usar
-          brightness: Brightness.light,
-          primary: Color(0xFFA64D79),
-          onPrimary: Colors.white,
-          secondary: Color(0xFF6A1E55), //essa seria a cor destaque
-          onSecondary: Colors.white,
-          error: Colors.red,
-          onError: Colors.white,
-          surface: Color(0xFF3B1C32),
-          onSurface: Color(0xFF1A1A1D),
+        textTheme: tema.textTheme.copyWith(
+          headlineLarge: const TextStyle(
+            fontFamily: 'OpenSans',
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+          ),
         ),
       ),
     );
@@ -102,6 +97,11 @@ class _MyHomePageState extends State<MyHomePage> {
           IconButton(
             icon: Icon(Icons.add),
             // color: const Color.fromARGB(255, 55, 124, 57),
+            style: ButtonStyle(
+              backgroundColor: WidgetStatePropertyAll(Theme.of(context).colorScheme.primary),
+              foregroundColor: WidgetStatePropertyAll(Theme.of(context).colorScheme.onPrimary),
+            ),
+
             onPressed: () => _openTransactionFormModal(context),
           ),
         ],
@@ -123,14 +123,15 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        // foregroundColor: Colors.white, // cor do ícone
-        // backgroundColor: const Color.fromARGB(255, 55, 124, 57),
+        foregroundColor:
+            Theme.of(context).colorScheme.onPrimary, // cor do ícone
+        backgroundColor: Theme.of(context).colorScheme.primary,
         child: Icon(Icons.add),
         onPressed: () => _openTransactionFormModal(context),
       ),
       floatingActionButtonLocation:
           FloatingActionButtonLocation
-              .centerFloat, //cuida da localização do botão (deixa ela no ladinho dps)
+              .endFloat, //cuida da localização do botão (deixa ela no ladinho dps)
     );
   }
 }
